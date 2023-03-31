@@ -1,0 +1,99 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+.header {
+    display: grid;
+    place-items: center;
+    background-color: blueviolet;
+    height: 8vh;
+    margin-bottom: 1rem;
+}
+.nav_items-list {
+    display: flex;
+    list-style: none;
+}
+.nav_item {
+    margin-left: 20px;
+}
+.nav_item > a {
+    text-decoration: none;
+    color: white;
+}
+.nav_item > a:hover {
+    color: black;
+}
+
+.main-content {
+    min-height: 80.3vh;
+}
+.blog_form {
+    width: 40%;
+    margin: 0px auto;
+}
+.form-group {
+    margin: 15px 5px;
+}
+
+.form-group > input[type="text"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(145, 142, 142);
+    border-radius: 5px;
+}
+
+.form-group > input[type="text"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+    outline: 1px solid var(--purple_dark);
+}
+
+#description_form {
+    grid-column: span 2;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: 500;
+    /* color: var(--gray_dark); */
+    color: var(--gray_dark);
+    margin-bottom: 8px;
+    display: block;
+}
+.btn {
+    cursor: pointer;
+    border: 0px;
+}
+
+.submit-button {
+    width: 30%;
+    margin: 20px auto;
+    background-color: rgb(154 80 235);
+    /* color: white; */
+    font-size: 17px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.submit-button:hover {
+    background-color: rgb(100, 30, 174);
+}
+/* message */
+.error-message {
+    display: block;
+    color: red;
+    padding: 10px;
+}
+.footer {
+    color: white;
+    background-color: black;
+    display: grid;
+    place-items: center;
+    height: 10vh;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+
             $table->string('image');
             $table->string('slug', 100);
             $table->tinyText('summary');

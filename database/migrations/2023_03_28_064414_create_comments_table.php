@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('blog_id')->constrained('blogs')
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();;
-            $table->string('title', 200);
-            $table->dateTime('published_date');
+                ->cascadeOnDelete();
+
+            //  $table->foreignIdFor('Blog::class'); new way for foreign key 
             $table->text('comments');
+            $table->dateTime('published_date');
             $table->timestamps();
         });
     }

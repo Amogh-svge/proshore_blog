@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('statuscode', function (Blueprint $table) {
-            $table->renameColumn('status_title', 'stat_title');
-            $table->string('category', 100)->change();
+        Schema::create('table_blog_tags', function (Blueprint $table) {
+            $table->foreignId('blog_id')->constrained('blogs');
+            $table->foreignId('tag_id')->constrained('tags');
         });
     }
 
@@ -22,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('statuscode', function (Blueprint $table) {
-            $table->dropColumn('status_description');
-        });
+        Schema::dropIfExists('table_blog_tags');
     }
 };

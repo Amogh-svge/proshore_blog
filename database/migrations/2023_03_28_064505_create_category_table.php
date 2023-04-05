@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('slug', 100);
             $table->text('content');
             $table->enum('status', ['active', 'passive'])->default('passive');

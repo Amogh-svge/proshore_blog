@@ -9,16 +9,18 @@ class ViewController extends Controller
 {
     public function homeView()
     {
-        $featured_blogs = Blog::where('status', 'featured')->get();
-        $latest_blogs = Blog::latest()->limit(10)->get();
-        $hot_blogs = Blog::where('status', 'hot')->get();
+        $blogs = Blog::all();
+        return view('pages.index', compact('blogs'));
+    }
 
-        // return  view('index', compact(['featured_blogs', 'latest_blogs', 'hot']));
+    public function blogView($slug)
+    {
+        $blog = Blog::whereSlug($slug)->with('comment')->first();
+        return view('pages.blog', compact(['blog']));
     }
 
     public function createBlog($request)
     {
-        // return $request;
         $created = Blog::create([
             'title' => 'welocm',
             'author_id' => 2,

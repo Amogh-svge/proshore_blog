@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('tag', 100)->unique();
-            $table->string('slug', 100)->nullable();
+            $table->string('slug', 100)->unique()->nullable();
+            //slug should be nullable
             $table->text('content');
             $table->enum('status', ['active', 'passive'])->default('passive');
             $table->timestamps();

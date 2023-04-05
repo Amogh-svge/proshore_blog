@@ -20,13 +20,14 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->text(50);
         return [
-            'title' => fake()->title(),
+            'title' => $title,
             'image' => fake()->imageUrl(640, 480),
             'author_id' => User::all()->random()->id,
-            'slug' => fake()->slug(),
+            'slug' => Str::slug($title),
             'summary' => fake()->text(100),
-            'content' => fake()->paragraph(5),
+            'content' => fake()->paragraph(15),
             'published_at' => fake()->dateTime(),
         ];
     }

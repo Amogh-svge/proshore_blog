@@ -1,3 +1,3 @@
 @error($value)
-    <span class="error-message">{{ $errors->first($value) }}</span>
+    <span class="error-message"> <small>{{ $errors->first($value) }}</small></span>
 @enderror

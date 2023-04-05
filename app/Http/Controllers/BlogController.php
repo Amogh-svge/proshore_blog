@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -13,8 +14,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return Blog::latest()->limit(3)->get();
-        return view('blog.list_blogs');
+        $user = new User();
+        // $man = $user::find(5);
+        // $blogs = Blog::whereBelongsTo($man)->get();
+        // $user->wherehas('blog', fn ($query) => $query->where('id', '<', '4 '))->get();
+        $blogs =  Blog::latest()->get();
+        return view('blogs.list_blog', compact(['blogs']));
     }
 
     /**
@@ -59,8 +64,7 @@ class BlogController extends Controller
             'published_at' =>  date('Y-m-d H:i:s'),
         ]);
 
-        return $created ? "success" : "failure";
-        // return view('blogs.blog_index');
+        return view('blogs.list_blog');
     }
 
     /**

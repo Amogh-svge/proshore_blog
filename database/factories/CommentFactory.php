@@ -21,7 +21,6 @@ class CommentFactory extends Factory
     {
         return [
             'blog_id' => Blog::all()->random()->id,
-            'title' => fake()->title(),
             'published_date' => fake()->dateTime(),
             'comments' => fake()->paragraph(1),
         ];

@@ -26,7 +26,7 @@ Route::resource('category', CategoryController::class);
 
 Route::controller(ViewController::class)->group(function () {
     Route::get('/', 'homeView')->name('view.home');
-    Route::post('/create_blog/{id}', 'createBlog');
+    Route::get('/blog/{slug}', 'blogView')->name('view.blog');
 });
 
 Route::controller(CommentController::class)->group(function () {

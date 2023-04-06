@@ -17,23 +17,39 @@
     <div class="main-content-wrapper section-padding-100">
         <div class="container">
 
-            <table border="1">
+            <table class="table table-striped" width="100%" cellspacing="0" id="table_id">
                 <thead>
+                    <th>S.N.</th>
                     <th>Author Name</th>
-                    <th>Author_id</th>
-                    <th>Slug</th>
-                    <th>Summary</th>
+                    <th>title</th>
                     <th>Status</th>
-                    <th>Published Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Details</th>
+                    <th>Published</th>
                 </thead>
-                @foreach ($blogs as $blog)
+                @foreach ($blogs as $key => $blog)
                     <tr>
+                        <td class="text-center">{{ $key + 1 }}</td>
                         <td>{{ $blog->user->name }}</td>
-                        <td>{{ $blog->author_id }}</td>
-                        <td>{{ $blog->slug }}</td>
-                        <td>{{ $blog->summary }}</td>
+                        <td>{{ $blog->title }}</td>
                         <td>{{ $blog->status }}</td>
-                        <td>{{ $blog->published_at }}</td>
+                        <td class="text-center">
+                            <a href="#">
+                                <ion-icon size="small" name="create"></ion-icon>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#" class="mx-1">
+                                <ion-icon size="small" name="trash"></ion-icon>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#">
+                                <ion-icon size="small" name="information-circle-outline"></ion-icon>
+                            </a>
+                        </td>
+                        <td>{{ date('F j, Y, ', (int) $blog->published_at) }}</td>
                     </tr>
                 @endforeach
 

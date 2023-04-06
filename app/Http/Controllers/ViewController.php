@@ -22,14 +22,12 @@ class ViewController extends Controller
 
     public function viewAllBlog()
     {
-        return "hello";
         $blogs =  Blog::latest()->get();
         return view('pages.view_all_blogs');
     }
 
     public function viewAllCategories()
     {
-        return "hello category";
         $categories =  Category::latest()->get();
         return view('pages.view_all_categories');
     }

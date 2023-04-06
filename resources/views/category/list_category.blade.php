@@ -6,7 +6,7 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="single-blog-title text-center">
-                        <h3>All Blogs list</h3>
+                        <h3>All Category list</h3>
                     </div>
                 </div>
             </div>
@@ -16,29 +16,27 @@
 
     <div class="main-content-wrapper section-padding-100">
         <div class="container">
-
-            <table border="1">
+            <table class="table table-striped" width="100%" cellspacing="0" id="table_id">
                 <thead>
-                    <th>Author Name</th>
-                    <th>Author_id</th>
-                    <th>Slug</th>
-                    <th>Summary</th>
+                    <th>S.N.</th>
+                    <th>Category Name</th>
                     <th>Status</th>
-                    <th>Published Date</th>
+                    <th>Action</th>
+                    <th class="text-center">Manage Status</th>
                 </thead>
-                @foreach ($categories as $category)
+                @foreach ($categories as $key => $category)
                     <tr>
-                        <td>{{ $category->user->name }}</td>
-                        <td>{{ $category->author_id }}</td>
-                        <td>{{ $category->slug }}</td>
-                        <td>{{ $category->summary }}</td>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $category->title }}</td>
                         <td>{{ $category->status }}</td>
-                        <td>{{ $category->published_at }}</td>
+                        <td>
+                            <a href="#">Edit</a> |
+                            <a href="#">Delete </a>
+                        </td>
+                        <td class="text-center"><a href="#">Activate</a></td>
                     </tr>
                 @endforeach
-
             </table>
-
         </div>
     </div>
 @endsection

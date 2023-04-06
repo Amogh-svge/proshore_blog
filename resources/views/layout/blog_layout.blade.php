@@ -15,6 +15,12 @@
     <!-- Favicon  -->
     <link rel="icon" href="/img/core-img/favicon.ico">
 
+    {{-- datatables css --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    {{-- ionicons --}}
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
     <!-- Style CSS -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/custom_styles.css">
@@ -143,6 +149,16 @@
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+
+    {{-- datatables  --}}
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
     <!-- Popper js -->
     <script src="/js/popper.min.js"></script>
     <!-- Bootstrap js -->
@@ -151,6 +167,7 @@
     <script src="/js/plugins.js"></script>
     <!-- Active js -->
     <script src="/js/active.js"></script>
+
 
 </body>
 

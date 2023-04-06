@@ -26,14 +26,14 @@
                     <th>Status</th>
                     <th>Published Date</th>
                 </thead>
-                @foreach ($blogs as $blog)
+                @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $blog->user->name }}</td>
-                        <td>{{ $blog->author_id }}</td>
-                        <td>{{ $blog->slug }}</td>
-                        <td>{{ $blog->summary }}</td>
-                        <td>{{ $blog->status }}</td>
-                        <td>{{ $blog->published_at }}</td>
+                        <td>{{ $category->user->name }}</td>
+                        <td>{{ $category->author_id }}</td>
+                        <td>{{ $category->slug }}</td>
+                        <td>{{ $category->summary }}</td>
+                        <td>{{ $category->status }}</td>
+                        <td>{{ $category->published_at }}</td>
                     </tr>
                 @endforeach
 

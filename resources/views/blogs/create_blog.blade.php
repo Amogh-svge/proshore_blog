@@ -12,7 +12,7 @@
     </div>
     <!-- ********** Hero Area End ********** -->
     <main class="main-content">
-        <form action="{{ route('blogs.store') }}" class="blog_form" method="POST">
+        <form action="{{ route('blogs.store') }}" class="blog_form" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="" class="form-label">Blog Title</label>
@@ -34,8 +34,8 @@
 
             <div class="form-group">
                 <label for="" class="form-label">Blog Image</label>
-                <input type="file" name="blog_image">
-                @include('common.error', [($value = 'blog_image')])
+                <input type="file" name="image">
+                @include('common.error', [($value = 'image')])
             </div>
 
             <div class="form-group">

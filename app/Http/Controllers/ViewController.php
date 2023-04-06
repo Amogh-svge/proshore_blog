@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
@@ -19,19 +20,17 @@ class ViewController extends Controller
         return view('pages.blog', compact(['blog']));
     }
 
-    public function createBlog($request)
+    public function viewAllBlog()
     {
-        $created = Blog::create([
-            'title' => 'welocm',
-            'author_id' => 2,
-            'image' => 'httpd://ashdajgsd',
-            'slug' => 'slug_one',
-            'summary' => 'summary one of us',
-            'content' => 'we are we are who we are',
-            'status' => 'passive',
-            'published_at' => date('ymd'),
-        ]);
-        if ($created)
-            return "successfully created";
+        return "hello";
+        $blogs =  Blog::latest()->get();
+        return view('pages.view_all_blogs');
+    }
+
+    public function viewAllCategories()
+    {
+        return "hello category";
+        $categories =  Category::latest()->get();
+        return view('pages.view_all_categories');
     }
 }

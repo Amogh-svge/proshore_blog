@@ -46,3 +46,7 @@ select:focus {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.footer-logo {
+    font-weight: 700;
+    font-size: 1.8em;
+}

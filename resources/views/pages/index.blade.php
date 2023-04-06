@@ -56,14 +56,17 @@
                                         <div class="single-blog-post post-style-4 d-flex align-items-center">
                                             <!-- Post Thumbnail -->
                                             <div class="post-thumbnail">
-                                                <img src="{{ $blog->image }}" alt="">
+                                                <img src="{{ url('/storage/blog_images/' . $blog->image) }}" alt="no image">
                                             </div>
+
                                             <!-- Post Content -->
                                             <div class="post-content">
                                                 <a href="{{ route('view.blog', $blog->slug) }}" class="headline">
                                                     <h5>{{ $blog->title }}</h5>
                                                 </a>
-                                                <p class="line-clamp">{{ $blog->content }}</p>
+                                                <p class="line-clamp">
+                                                    {{ $blog->content }}
+                                                </p>
 
                                                 <!-- Post Meta -->
                                                 <div class="post-meta">

@@ -24,9 +24,14 @@ Route::resource('blogs', BlogController::class);
 Route::resource('category', CategoryController::class);
 
 
-Route::controller(ViewController::class)->group(function () {
-    Route::get('/', 'homeView')->name('view.home');
-    Route::get('/blog/{slug}', 'blogView')->name('view.blog');
+Route::controller(ViewController::class)->name('view.')->group(function () {
+    Route::get('/', 'homeView')->name('home');
+    Route::get('/blog-detail/{slug}', 'blogView')->name('blog');
+
+    Route::prefix('blog')->group(function () {
+        Route::get('/categories', 'viewAllCategories')->name('category');
+        Route::get('/lists', 'viewAllBlog')->name('allblogs');
+    });
 });
 
 Route::controller(CommentController::class)->group(function () {

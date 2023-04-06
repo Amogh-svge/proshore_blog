@@ -10,7 +10,8 @@
 @section('content')
     <!-- ********** Hero Area Start ********** -->
 
-    <div class="hero-area height-600 bg-img background-overlay" style="background-image: url({{ $blog->image }});">
+    <div class="hero-area height-600 bg-img background-overlay"
+        style="background-image: url({{ url('/storage/blog_images/' . $blog->image) }});">
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">

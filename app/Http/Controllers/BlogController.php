@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
 use App\Models\User;
+use App\Services\BlogService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -33,38 +36,22 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|min:3',
-            'blog_image' => 'required',
-            'summary' => 'required|min:15',
-            'content' =>  'required',
-            'status' =>  'required',
-        ]);
+        $validatedBlogInfo = Arr::except($request->validated(), ['image']);
 
-        // $image = $request->file('blog_image');
-        // if ($image) {
-        //     $image_name = date('YmdHi') . uniqid() . $image->getClientOriginalName();
-        //     $image->save(public_path('storage/blog_images/' . $image_name));
-        //     return $image_name;
-        // } else {
-        //     return "no image";
-        // }
+        $image = $request->file('image');
+        $image_name = BlogService::checkAndSaveImageIfExist($image);
 
-
-        $created = Blog::create([
-            'title' => $request->title,
-            'author_id' => 2,
-            'image' => "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1099&q=80",
+        $remainingBlogInfo = [
             'slug' => Str::slug($request->title),
-            'summary' => $request->summary,
-            'content' => $request->content,
-            'status' => $request->status,
+            'author_id' => 2,
             'published_at' =>  date('Y-m-d H:i:s'),
-        ]);
-
-        return view('blogs.list_blog');
+            'image' => $image_name,
+        ];
+        $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+        $createBlog = BlogService::addBlog($AddNewBlog);
+        return back()->with('success', 'Blog Successfully Created');
     }
 
     /**

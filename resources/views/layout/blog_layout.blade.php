@@ -46,7 +46,8 @@
                         <div class="collapse navbar-collapse" id="worldNav">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{ route('view.home') }}">Home <span
+                                            class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -96,7 +97,9 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="footer-single-widget">
-                        <a href="#"><img src="/img/core-img/logo.png" alt=""></a>
+                        <a class="footer-logo" style="color: white;" href="{{ route('view.home') }}">
+                            BlogWorld</a>
+
                         <div class="copywrite-text mt-30">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

@@ -26,6 +26,7 @@ class CategoryFactory extends Factory
             'slug' => Str::slug($title),
             'status' => fake()->randomElement(['active', 'passive']),
             'content' => fake()->paragraph(1),
+            'image' => fake()->imageUrl(640, 480),
         ];
     }
 }

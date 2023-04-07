@@ -1,4 +1,7 @@
-@yield('php')
+@php
+    use App\Models\Category;
+    $categories = Category::all();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,8 +63,10 @@
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">Category</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="catagory.html">Sports</a>
-                                        <a class="dropdown-item" href="contact.html">Entertainment</a>
+                                        @foreach ($categories as $category)
+                                            <a class="dropdown-item"
+                                                href="{{ route('view.category', $category->slug) }}">{{ $category->title }}</a>
+                                        @endforeach
                                     </div>
                                 </li>
 
@@ -152,6 +157,7 @@
 
     {{-- datatables  --}}
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+    {{-- iconicons --}}
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
     <script>

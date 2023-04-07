@@ -26,9 +26,9 @@ class ViewController extends Controller
         return view('pages.view_all_blogs');
     }
 
-    public function viewAllCategories()
+    public function viewAllCategories($category)
     {
-        $categories =  Category::latest()->get();
+        // $category_blogs = Category::where('ca')->get();
         return view('pages.view_all_categories');
     }
 }

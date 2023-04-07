@@ -163,16 +163,7 @@
                 <!-- ========== Sidebar Area ========== -->
                 <div class="col-12 col-md-8 col-lg-4">
                     <div class="post-sidebar-area">
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <h5 class="title">About World</h5>
-                            <div class="widget-content">
-                                <p>The mango is perfect in that it is always yellow and if it’s not, I don’t want to
-                                    hear about it. The mango’s only flaw, and it’s a minor one, is the effort it
-                                    sometimes takes to undress the mango, carve it up in a way that makes sense, and
-                                    find its way to the mouth.</p>
-                            </div>
-                        </div>
+
                         <!-- Widget Area -->
                         <div class="sidebar-widget-area">
                             <h5 class="title">Top Stories</h5>

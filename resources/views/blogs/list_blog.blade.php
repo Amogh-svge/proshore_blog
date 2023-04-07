@@ -35,7 +35,7 @@
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->status }}</td>
                         <td class="text-center">
-                            <a href="#">
+                            <a href="{{ route('blogs.edit', $blog->id) }}">
                                 <ion-icon size="small" name="create"></ion-icon>
                             </a>
                         </td>

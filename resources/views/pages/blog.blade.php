@@ -76,16 +76,7 @@
                 <!-- ========== Sidebar Area ========== -->
                 <div class="col-12 col-md-8 col-lg-4">
                     <div class="post-sidebar-area mb-100">
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <h5 class="title">About World</h5>
-                            <div class="widget-content">
-                                <p>The mango is perfect in that it is always yellow and if it’s not, I don’t want to
-                                    hear about it. The mango’s only flaw, and it’s a minor one, is the effort it
-                                    sometimes takes to undress the mango, carve it up in a way that makes sense, and
-                                    find its way to the mouth.</p>
-                            </div>
-                        </div>
+
                         <!-- Widget Area -->
                         <div class="sidebar-widget-area">
                             <h5 class="title">Top Stories</h5>
@@ -181,60 +172,8 @@
                         <!-- Post Content -->
                         <div class="post-content">
                             <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in
-                                    Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
-                                        class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="/img/blog-img/b2.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in
-                                    Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
-                                        class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="/img/blog-img/b7.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                            <!-- Video Button -->
-                            <a href="https://www.youtube.com/watch?v=IhnqEwFSJRg" class="video-btn"><i
-                                    class="fa fa-play"></i></a>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in
+                                <h5 class="text-hover">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex
+                                    Concepts in
                                     Physics?</h5>
                             </a>
                             <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>

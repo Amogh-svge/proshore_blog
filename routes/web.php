@@ -29,10 +29,12 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
     Route::get('/blog-detail/{slug}', 'blogView')->name('blog');
 
     Route::prefix('blog')->group(function () {
-        Route::get('/categories', 'viewAllCategories')->name('category');
-        Route::get('/lists', 'viewAllBlog')->name('allblogs');
+        Route::get('/allblogs', 'viewAllBlog')->name('allblogs');
+        Route::get('/categories/{category}', 'viewAllCategories')->name('category');
     });
 });
+
+
 
 Route::controller(CommentController::class)->group(function () {
 });

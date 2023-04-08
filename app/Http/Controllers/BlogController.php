@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\User;
 use App\Services\BlogService;
 use Illuminate\Http\Request;
@@ -18,9 +19,6 @@ class BlogController extends Controller
     public function index()
     {
         $user = new User();
-        // $man = $user::find(5);
-        // $blogs = Blog::whereBelongsTo($man)->get();
-        // $user->wherehas('blog', fn ($query) => $query->where('id', '<', '4 '))->get();
         $blogs =  Blog::latest()->get();
         return view('blogs.list_blog', compact(['blogs']));
     }

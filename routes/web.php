@@ -30,7 +30,7 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
 
     Route::prefix('blog')->group(function () {
         Route::get('/allblogs', 'viewAllBlog')->name('allblogs');
-        Route::get('/categories/{category}', 'viewAllCategories')->name('category');
+        Route::get('/categories/{slug}', 'viewAllCategories')->name('category');
     });
 });
 

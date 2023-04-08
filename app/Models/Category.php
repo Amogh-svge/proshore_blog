@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
@@ -13,8 +14,8 @@ class Category extends Model
     protected $guarded = [];
 
 
-    public function blog(): HasMany
+    public function blog(): BelongsToMany
     {
-        return $this->hasMany(Blog::class);
+        return $this->belongsToMany(Blog::class, 'table_blog_category', 'category_id', 'blog_id');
     }
 }

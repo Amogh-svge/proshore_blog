@@ -9,14 +9,14 @@
 
 @section('content')
     <!-- ********** Hero Area Start ********** -->
-
+    {{-- @dd($category) --}}
     <div class="hero-area height-600 bg-img background-overlay"
-        style="background-image: url({{ url('/storage/blog_images/' . 'download.jpeg') }});">
+        style="background-image: url({{ url('/storage/app_images/category_images') . '/' . $category->image }});">
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="single-blog-title text-center">
-                        <h3>Lifestyle</h3>
+                        <h3>{{ $category->title }}</h3>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
             <!-- ============== All Category Related Post ============== -->
             <div class="row">
-                @for ($i = 1; $i < 10; $i++)
+                @forelse ($category->blog as $blog)
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <!-- Single Blog Post -->
                         <div class="single-blog-post">
@@ -41,7 +41,7 @@
                             </div>
                             <!-- Post Content -->
                             <div class="post-content">
-                                <a href="#" class="headline ">
+                                <a href="{{ route('view.blog', $blog->slug) }}" class="headline ">
                                     <h5 class="text-hover">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex
                                         Concepts in
                                         Physics?</h5>
@@ -55,9 +55,15 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                @empty
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <img src="{{ url('/no-content.svg') }}" alt="">
+                        <h5 class="text-center">Nothing Here</h5>
+                    </div>
+                @endforelse
             </div>
 
+        @empty(!$category->blog->toArray())
             <!-- Load More btn -->
             <div class="row">
                 <div class="col-12">
@@ -66,6 +72,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        @endempty
     </div>
+</div>
 @endsection

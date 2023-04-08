@@ -56,16 +56,15 @@
                         </div>
                     </div>
                 @endfor
-            </div>
-
-            <!-- Load More btn -->
-            <div class="row">
+                <!-- Load More btn -->
                 <div class="col-12">
                     <div class="load-more-btn mt-50 text-center">
                         <a href="#" class="btn world-btn">Load More</a>
                     </div>
                 </div>
+                <!-- Load More btn -->
             </div>
+
         </div>
     </div>
 @endsection

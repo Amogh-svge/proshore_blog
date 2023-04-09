@@ -43,7 +43,7 @@
                         <div class="post-content">
                             <h6>{{ $blog->content }}</h6>
 
-                            <blockquote class="mb-30">
+                            {{-- <blockquote class="mb-30">
                                 <h6>Aliquam auctor lacus a dapibus pulvinar. Morbi in elit erat. Quisque et augue nec
                                     tortor blandit hendrerit eget sit amet sapien. Curabitur at tincidunt metus, quis
                                     porta ex. Duis lacinia metus vel eros cursus pretium eget.</h6>
@@ -56,7 +56,7 @@
                                 Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum.
                                 Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices.
                                 Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices
-                                consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</h6>
+                                consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</h6> --}}
                             <!-- Post Tags -->
                             {{-- <ul class="post-tags">
                                 <li><a href="#">Manual</a></li>
@@ -75,7 +75,7 @@
                 </div>
 
                 <!-- ========== Sidebar Area ========== -->
-                <div class="col-12 col-md-8 col-lg-4">
+                {{-- <div class="col-12 col-md-8 col-lg-4">
                     <div class="post-sidebar-area mb-100">
 
                         <!-- Widget Area -->
@@ -102,37 +102,44 @@
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- ============== Related Post ============== -->
+
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="/img/blog-img/b1.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5 class="text-hover">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex
-                                    Concepts in
-                                    Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
-                                        class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                @forelse ($similar_blogs as $blog)
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post">
+                            <!-- Post Thumbnail -->
+                            <div class="post-thumbnail">
+                                <img src="{{ url('storage/blog_images/' . $blog->image) }}" alt="">
+                                <!-- Catagory -->
+                                <div class="post-cta"><a
+                                        href="{{ route('view.category', $blog->category->first()->slug) }}">{{ $blog->category->first()->title }}</a>
+                                </div>
+                            </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="#" class="headline">
+                                    <h5 class="text-hover">{{ $blog->title }}</h5>
+                                </a>
+                                <p class="line-clamp">{{ $blog->content }}</p>
+                                <!-- Post Meta -->
+                                <div class="post-meta">
+                                    <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on <a
+                                            href="#"
+                                            class="post-date">{{ $date->parse($blog->user->published_at)->isoFormat('lll') }}</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                @endforelse
             </div>
+
 
             <div class="row">
                 <div class="col-12 col-lg-8">

@@ -16,8 +16,14 @@ class ViewController extends Controller
 
     public function blogView($slug)
     {
-        $blog = Blog::whereSlug($slug)->with('comment')->first();
-        return view('pages.blog', compact(['blog']));
+        $blog = Blog::whereSlug($slug)->with('comment')->with('category')->first();
+        $blog_category = $blog->category->first();
+
+        $similar_blogs = $blog_category->blog()
+            ->whereNot('id', $blog->id)
+            ->limit(3)->get();
+
+        return view('pages.blog', compact(['blog', 'similar_blogs']));
     }
 
     public function viewAllBlog()

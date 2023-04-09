@@ -35,7 +35,8 @@
                         <div class="single-blog-post">
                             <!-- Post Thumbnail -->
                             <div class="post-thumbnail">
-                                <img src="/img/blog-img/b1.jpg" alt="">
+
+                                <img src="{{ url('/storage/blog_images/' . $blog->image) }}" alt="">
                                 <!-- Catagory -->
                                 <div class="post-cta"><a href="#">travel</a></div>
                             </div>
@@ -44,11 +45,13 @@
                                 <a href="{{ route('view.blog', $blog->slug) }}" class="headline ">
                                     <h5 class="text-hover">{{ $blog->title }}</h5>
                                 </a>
-                                <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                                <p class="line-clamp">{{ $blog->content }}</p>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
-                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
-                                            class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                    <p><a href="#" class="post-author">{{ $blog->user->name }}</a>
+                                        on <a href="#"
+                                            class="post-date">{{ $date->parse($blog->user->published_at)->isoFormat('lll') }}</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>

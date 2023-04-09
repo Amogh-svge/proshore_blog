@@ -29,7 +29,7 @@
 
             <!-- ============== All Category Related Post ============== -->
             <div class="row">
-                @for ($i = 0; $i < 20; $i++)
+                @forelse ($blogs as $blog)
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <!-- Single Blog Post -->
                         <div class="single-blog-post">
@@ -42,11 +42,9 @@
                             <!-- Post Content -->
                             <div class="post-content">
                                 <a href="#" class="headline ">
-                                    <h5 class="text-hover">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex
-                                        Concepts in
-                                        Physics?</h5>
+                                    <h5 class="text-hover">{{ $blog->title }}</h5>
                                 </a>
-                                <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                                <p class="line-clamp">{{ $blog->content }}</p>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
                                     <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
@@ -55,15 +53,25 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                @empty
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <img src="{{ url('/no-content.svg') }}" alt="">
+                        <h5 class="text-center">Nothing Here</h5>
+                    </div>
+                @endforelse
+
+            </div>
+
+            {{-- @empty(!$category->blog->toArray())
                 <!-- Load More btn -->
-                <div class="col-12">
-                    <div class="load-more-btn mt-50 text-center">
-                        <a href="#" class="btn world-btn">Load More</a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="load-more-btn mt-50 text-center">
+                            <a href="#" class="btn world-btn">Load More</a>
+                        </div>
                     </div>
                 </div>
-                <!-- Load More btn -->
-            </div>
+            @endempty --}}
 
         </div>
     </div>

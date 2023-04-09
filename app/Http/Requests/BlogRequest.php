@@ -25,7 +25,7 @@ class BlogRequest extends FormRequest
             'title' => 'required|min:3',
             'image' => 'required',
             'summary' => 'required|min:15',
-            'content' =>  'required',
+            'content' =>  'required|min:50',
             'status' =>  'required',
         ];
     }

@@ -34,21 +34,31 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(BlogRequest $request)
+    // {
+    //     $validatedBlogInfo = Arr::except($request->validated(), ['image']);
+
+    //     $image = $request->file('image');
+    //     $image_name = BlogService::checkAndSaveImageIfExist($image);
+
+    //     $remainingBlogInfo = [
+    //         'slug' => Str::slug($request->title),
+    //         'author_id' => 2,
+    //         'published_at' =>  date('Y-m-d H:i:s'),
+    //         'image' => $image_name,
+    //     ];
+    //     $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+    //     $createBlog = BlogService::addBlog($AddNewBlog);
+    //     return back()->with('success', 'Blog Successfully Created');
+    // }
+
     public function store(BlogRequest $request)
     {
         $validatedBlogInfo = Arr::except($request->validated(), ['image']);
 
         $image = $request->file('image');
-        $image_name = BlogService::checkAndSaveImageIfExist($image);
+        $image_name = BlogService::addMyBlog($image, $validatedBlogInfo);
 
-        $remainingBlogInfo = [
-            'slug' => Str::slug($request->title),
-            'author_id' => 2,
-            'published_at' =>  date('Y-m-d H:i:s'),
-            'image' => $image_name,
-        ];
-        $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
-        $createBlog = BlogService::addBlog($AddNewBlog);
         return back()->with('success', 'Blog Successfully Created');
     }
 
@@ -71,18 +81,34 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // public function update(Request $request, Blog $blog)
+    // {
+    //     $validatedBlogInfo = Arr::except($request->validated(), ['image']);
+    //     $previousImagePath = url('/storage/blog_images/' . $blog->image);
+
+    //     $image = $request->file('image');
+    //     $image_name = BlogService::checkAndUpdateImageIfExist($image, $previousImagePath);
+
+    //     $remainingBlogInfo = [
+    //         'slug' => Str::slug($request->title),
+    //         'author_id' => 2,
+    //         'published_at' =>  date('Y-m-d H:i:s'),
+    //         'image' => $image_name,
+    //     ];
+    //     $updateBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+
+    //     $updateBlog = BlogService::updateBlog($updateBlog, $blog);
+    //     return back()->with('success', 'Blog Successfully Updated');
+    // }
+
     public function update(Request $request, Blog $blog)
     {
-        return $blog->update([
-            'title' => 'welocm',
-            'author_id' => 2,
-            'image' => 'httpd://ashdajgsd',
-            'slug' => 'slug_one',
-            'summary' => 'summary one of us',
-            'content' => 'we are we are who we are',
-            'published_at' => date('ymd'),
-        ]);
-        // return view('blogs.blog_index');
+        $validatedBlogInfo = Arr::except($request->validated(), ['image']);
+        $image = $request->file('image');
+
+        $updateBlog = BlogService::updateMyBlog($blog, $image, $validatedBlogInfo);
+
+        return back()->with('success', 'Blog Successfully Updated');
     }
 
     /**

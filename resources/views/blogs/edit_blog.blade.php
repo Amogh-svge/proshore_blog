@@ -40,18 +40,16 @@
 
             <div class="form-group">
                 <label for="status" class="form-label">Status</label>
-                <select name="status" value="{{ $blog->status }}" id="status">
-                    @foreach ($blog->status as $item)
-                    @endforeach
-                    <option value="active">Active</option>
-                    <option value="passive" selected>Passive</option>
+                <select name="status" id="status">
+                    <option value="active" {{ $blog->status == 'active' ? 'checked' : '' }}>Active</option>
+                    <option value="passive" {{ $blog->status == 'passive' ? 'checked' : '' }}>Passive</option>
                 </select>
                 @include('common.error', [($value = 'status')])
             </div>
 
 
             <div>
-                <input type="submit" class="btn btn-dark" value="Create Blog">
+                <input type="submit" class="btn btn-dark" value="Update Blog">
             </div>
         </form>
     </main>

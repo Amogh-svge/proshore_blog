@@ -42,9 +42,7 @@
                             <!-- Post Content -->
                             <div class="post-content">
                                 <a href="{{ route('view.blog', $blog->slug) }}" class="headline ">
-                                    <h5 class="text-hover">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex
-                                        Concepts in
-                                        Physics?</h5>
+                                    <h5 class="text-hover">{{ $blog->title }}</h5>
                                 </a>
                                 <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
                                 <!-- Post Meta -->

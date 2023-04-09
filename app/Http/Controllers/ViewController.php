@@ -23,7 +23,7 @@ class ViewController extends Controller
     public function viewAllBlog()
     {
         $blogs =  Blog::latest()->get();
-        return view('pages.view_all_blogs');
+        return view('pages.view_all_blogs', compact(['blogs']));
     }
 
     public function viewAllCategories($slug)

@@ -35,13 +35,13 @@
                         <div class="single-blog-post">
                             <!-- Post Thumbnail -->
                             <div class="post-thumbnail">
-                                <img src="/img/blog-img/b1.jpg" alt="">
+                                <img src="{{ url('/storage/blog_images/' . $blog->image) }}" alt="">
                                 <!-- Catagory -->
                                 <div class="post-cta"><a href="#">travel</a></div>
                             </div>
                             <!-- Post Content -->
                             <div class="post-content">
-                                <a href="#" class="headline ">
+                                <a href="{{ route('view.blog', $blog->slug) }}" class="headline ">
                                     <h5 class="text-hover">{{ $blog->title }}</h5>
                                 </a>
                                 <p class="line-clamp">{{ $blog->content }}</p>

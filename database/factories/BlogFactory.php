@@ -20,10 +20,14 @@ class BlogFactory extends Factory
      */
     public function definition(): array
     {
+        $image = fake()->randomElement([
+            'pic1.jpg', 'pic1.jpeg', 'pic2.jpeg', 'pic2.jpg', 'pic4.jpeg',
+            'pic3.jpg', 'pic4.jpg', 'pic5.jpg', 'pic6.jpg', 'pic7.jpg', 'pic8.jpg', 'pic9.jpg', 'pic10.jpg'
+        ]);
         $title = fake()->text(50);
         return [
             'title' => $title,
-            'image' => fake()->imageUrl(640, 480),
+            'image' => $image,
             'author_id' => User::all()->random()->id,
             'slug' => Str::slug($title),
             'summary' => fake()->text(100),

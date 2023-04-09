@@ -116,13 +116,14 @@
                             <div class="post-thumbnail">
                                 <img src="{{ url('storage/blog_images/' . $blog->image) }}" alt="">
                                 <!-- Catagory -->
-                                <div class="post-cta"><a
-                                        href="{{ route('view.category', $blog->category->first()->slug) }}">{{ $blog->category->first()->title }}</a>
+                                <div class="post-cta">
+                                    <a href="{{ route('view.category', $blog->category->first()->slug) }}">
+                                        {{ $blog->category->first()->title }}</a>
                                 </div>
                             </div>
                             <!-- Post Content -->
                             <div class="post-content">
-                                <a href="#" class="headline">
+                                <a href="{{ route('view.blog', $blog->slug) }}" class="headline">
                                     <h5 class="text-hover">{{ $blog->title }}</h5>
                                 </a>
                                 <p class="line-clamp">{{ $blog->content }}</p>

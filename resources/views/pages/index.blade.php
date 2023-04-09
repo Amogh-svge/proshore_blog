@@ -16,7 +16,8 @@
                     <div class="single-blog-title text-center">
                         <!-- Category -->
                         {{-- <div class="post-cta"><a href="a#">travel</a></div> --}}
-                        <h3>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h3>
+                        <h3>Minimalism Life is a collaborative publication focused on the nuances of minimalism and simple
+                            living</h3>
                     </div>
                 </div>
             </div>

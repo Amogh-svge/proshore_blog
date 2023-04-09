@@ -29,7 +29,7 @@
 
             <!-- ============== All Category Related Post ============== -->
             <div class="row">
-                @forelse ($category->blog as $blog)
+                @forelse ($paginate_blogs as $blog)
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <!-- Single Blog Post -->
                         <div class="single-blog-post">
@@ -64,13 +64,11 @@
                 @endforelse
             </div>
 
-        @empty(!$category->blog->toArray())
+        @empty(!$paginate_blogs->toArray())
             <!-- Load More btn -->
             <div class="row">
-                <div class="col-12">
-                    <div class="load-more-btn mt-50 text-center">
-                        <a href="#" class="btn world-btn">Load More</a>
-                    </div>
+                <div class="paginate col-12">
+                    {{ $paginate_blogs->links() }}
                 </div>
             </div>
         @endempty

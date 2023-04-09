@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use Exception;
@@ -11,13 +12,6 @@ use function PHPUnit\Framework\throwException;
 
 class BlogService
 {
-
-    public static function addBlog(array $AddNewBlog)
-    {
-        $blog_created = Blog::create($AddNewBlog);
-        return $blog_created;
-    }
-
     public static function checkAndSaveImageIfExist($image)
     {
         try {
@@ -31,30 +25,6 @@ class BlogService
             return $err->getMessage();
         }
     }
-
-    public static function addMyBlog($image, $validatedBlogInfo)
-    {
-        $image_name = BlogService::checkAndSaveImageIfExist($image);
-
-        $remainingBlogInfo = [
-            'slug' => Str::slug($validatedBlogInfo['title']),
-            'author_id' => 2,
-            'published_at' =>  date('Y-m-d H:i:s'),
-            'image' => $image_name,
-        ];
-
-        $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
-        $blog_created = Blog::create($AddNewBlog);
-        return $blog_created;
-    }
-
-    public static function updateBlog(array $UpdateBlog, $blog)
-    {
-        $blog_updated = $blog->update($UpdateBlog);
-        return $blog_updated;
-    }
-
-
 
     public static function checkAndUpdateImageIfExist($image, $previousImagePath)
     {
@@ -71,8 +41,25 @@ class BlogService
         }
     }
 
+    public static function addBlog($image, $validatedBlogInfo)
+    {
+        $image_name = BlogService::checkAndSaveImageIfExist($image);
 
-    public static function updateMyBlog($blog, $image, $validatedBlogInfo)
+        $remainingBlogInfo = [
+            'slug' => Str::slug($validatedBlogInfo['title']),
+            'author_id' => User::all()->random()->id,
+            'published_at' =>  date('Y-m-d H:i:s'),
+            'image' => $image_name,
+        ];
+
+        $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+        $blog_created = Blog::create($AddNewBlog);
+        return $blog_created;
+    }
+
+
+
+    public static function updateBlog($blog, $image, $validatedBlogInfo)
     {
         $previousImagePath = url('/storage/blog_images/' . $blog->image);
         $image_name = BlogService::checkAndUpdateImageIfExist($image, $previousImagePath);

@@ -20,7 +20,9 @@ class CategoryFactory extends Factory
 
     public function definition(): array
     {
-        $title = fake()->title();
+
+        $title = fake()->unique()->randomElement(['Entertainment', 'Lifestyle', 'Sports']);
+
         return [
             'title' => $title,
             'slug' => Str::slug($title),

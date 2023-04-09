@@ -18,7 +18,6 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $user = new User();
         $blogs =  Blog::latest()->get();
         return view('blogs.list_blog', compact(['blogs']));
     }
@@ -34,30 +33,13 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(BlogRequest $request)
-    // {
-    //     $validatedBlogInfo = Arr::except($request->validated(), ['image']);
-
-    //     $image = $request->file('image');
-    //     $image_name = BlogService::checkAndSaveImageIfExist($image);
-
-    //     $remainingBlogInfo = [
-    //         'slug' => Str::slug($request->title),
-    //         'author_id' => 2,
-    //         'published_at' =>  date('Y-m-d H:i:s'),
-    //         'image' => $image_name,
-    //     ];
-    //     $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
-    //     $createBlog = BlogService::addBlog($AddNewBlog);
-    //     return back()->with('success', 'Blog Successfully Created');
-    // }
 
     public function store(BlogRequest $request)
     {
         $validatedBlogInfo = Arr::except($request->validated(), ['image']);
 
         $image = $request->file('image');
-        $image_name = BlogService::addMyBlog($image, $validatedBlogInfo);
+        $image_name = BlogService::addBlog($image, $validatedBlogInfo);
 
         return back()->with('success', 'Blog Successfully Created');
     }
@@ -106,7 +88,7 @@ class BlogController extends Controller
         $validatedBlogInfo = Arr::except($request->validated(), ['image']);
         $image = $request->file('image');
 
-        $updateBlog = BlogService::updateMyBlog($blog, $image, $validatedBlogInfo);
+        $updateBlog = BlogService::updateBlog($blog, $image, $validatedBlogInfo);
 
         return back()->with('success', 'Blog Successfully Updated');
     }

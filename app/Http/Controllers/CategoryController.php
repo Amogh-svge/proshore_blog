@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Arr;
 
 class CategoryController extends Controller
 {
@@ -13,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories =  Category::all();
-        return view('category.list_category', compact('categories'));
+        return view('category.category_list', compact('categories'));
     }
 
     /**
@@ -21,20 +25,23 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create_category');
+        return view('category.category_create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        Category::create([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'content' => $request->content,
-            'status' => $request->status,
-        ]);
+        $validatedCategoryInfo = Arr::except($request->validated(), ['image']);
+
+        $image = $request->file('image');
+        $createBlog = CategoryService::addCategory($image, $validatedCategoryInfo);
+
+        if ($createBlog)
+            return redirect(route('category.index'))->with('success', 'Category Successfully Created');
+        else
+            return redirect(route('category.index'))->with('failed', 'Failed To Create Category ');
     }
 
     /**
@@ -50,21 +57,22 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit_category');
+        return view('category.category_edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
+        $validatedCategoryInfo = Arr::except($request->validated(), ['image']);
+        $image = $request->file('image');
 
-        $category->update([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'content' => $request->content,
-            'status' => $request->status,
-        ]);
+        $update_category = CategoryService::updateCategory($category, $image, $validatedCategoryInfo);
+        if ($update_category)
+            return redirect(route('category.index'))->with('success', 'Category Successfully Updated');
+        else
+            return redirect(route('category.index'))->with('failed', 'Failed To Update category');
     }
 
     /**
@@ -72,6 +80,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
+        if ($category->delete())
+            return back()->with('success', 'Category Successfully Deleted');
+        else
+            return back()->with('failed', 'Failed To Delete Category');
     }
 }

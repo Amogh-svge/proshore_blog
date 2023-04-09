@@ -12,8 +12,9 @@
     </div>
     <!-- ********** Hero Area End ********** -->
     <main class="main-content">
-        <form action="{{ route('blogs.store') }}" class="blog_form" method="POST" enctype="multipart/form-data">
-            @csrf
+        <form action="{{ route('blogs.update', $blog->id) }}" class="blog_form" method="POST" enctype="multipart/form-data">
+            @method('PUT') @csrf
+
             <div class="form-group">
                 <label for="" class="form-label">Blog Title</label>
                 <input type="text" name="title" value="{{ $blog->title }}" placeholder="Enter Your Title">

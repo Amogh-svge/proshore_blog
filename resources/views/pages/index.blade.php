@@ -14,8 +14,8 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="single-blog-title text-center">
-                        <!-- Catagory -->
-                        <div class="post-cta"><a href="a#">travel</a></div>
+                        <!-- Category -->
+                        {{-- <div class="post-cta"><a href="a#">travel</a></div> --}}
                         <h3>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h3>
                     </div>
                 </div>

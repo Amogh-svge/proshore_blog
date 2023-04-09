@@ -26,11 +26,11 @@ class BlogService
         }
     }
 
-    public static function checkAndUpdateImageIfExist($image, $previousImagePath)
+    public static function checkAndUpdateImageIfExist($image, $previousImageName)
     {
         try {
             if ($image) {
-                unlink($previousImagePath);
+                unlink(public_path('storage/blog_images/') . $previousImageName);
                 $image_name = date('YmdHi') . uniqid() . $image->getClientOriginalName();
                 $destinationPath = public_path('/storage/blog_images/');
                 $image->move($destinationPath, $image_name);
@@ -61,12 +61,12 @@ class BlogService
 
     public static function updateBlog($blog, $image, $validatedBlogInfo)
     {
-        $previousImagePath = url('/storage/blog_images/' . $blog->image);
-        $image_name = BlogService::checkAndUpdateImageIfExist($image, $previousImagePath);
+        $previousImageName = $blog->image;
+        $image_name = BlogService::checkAndUpdateImageIfExist($image, $previousImageName);
 
         $remainingBlogInfo = [
             'slug' => Str::slug($validatedBlogInfo['title']),
-            'author_id' => 2,
+            'author_id' => $blog->author_id,
             'published_at' =>  date('Y-m-d H:i:s'),
             'image' => $image_name,
         ];

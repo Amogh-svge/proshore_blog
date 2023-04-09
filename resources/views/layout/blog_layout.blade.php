@@ -70,16 +70,24 @@
                                     </div>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Lifestyle</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">Manage Blog</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('blogs.create') }}">Create Blog</a>
+                                        <a class="dropdown-item" href="{{ route('blogs.index') }}">List Blog</a>
+
+                                    </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Admin</a>
+                                        aria-expanded="false">Manage Category</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('blogs.create') }}">Create Blog</a>
-                                        <a class="dropdown-item" href="{{ route('blogs.index') }}">List Blog</a>
+                                        <a class="dropdown-item" href="{{ route('category.create') }}">Create
+                                            Category</a>
+                                        <a class="dropdown-item" href="{{ route('category.index') }}">List Category</a>
                                     </div>
                                 </li>
                             </ul>
@@ -173,7 +181,26 @@
     <script src="/js/plugins.js"></script>
     <!-- Active js -->
     <script src="/js/active.js"></script>
+    {{-- custom scripts --}}
+    <script>
+        const confirmDelete = (info) => {
+            event.preventDefault();
+            console.log("clicked");
 
+            //parent class of current node taken 
+            var parentNode_class = info.parentNode.className;
+            var element = document.querySelectorAll('.' + parentNode_class);
+            let data_id = (info.parentNode.dataset.id);
+            element.forEach(item => {
+                //if the items id matches the info's id
+                if (item.dataset.id.match(data_id)) {
+                    //submit the element if delete is true
+                    this.confirm('Do you want to delete?') === true && item.submit();
+                }
+            });
+        }
+    </script>
+    @yield('script')
 
 </body>
 

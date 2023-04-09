@@ -10,7 +10,7 @@ class ViewController extends Controller
 {
     public function homeView()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->paginate(8);
         return view('pages.index', compact('blogs'));
     }
 
@@ -28,7 +28,7 @@ class ViewController extends Controller
 
     public function viewAllBlog()
     {
-        $blogs =  Blog::latest()->get();
+        $blogs = Blog::latest()->paginate(9);
         return view('pages.view_all_blogs', compact(['blogs']));
     }
 

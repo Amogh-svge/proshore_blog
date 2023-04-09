@@ -54,3 +54,8 @@ select:focus {
 .text-hover:hover {
     color: rgb(12, 99, 139);
 }
+
+.paginate {
+    display: grid;
+    place-items: center;
+}

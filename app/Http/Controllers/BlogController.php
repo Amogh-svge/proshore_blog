@@ -29,7 +29,7 @@ class BlogController extends Controller
 
     public function store(BlogRequest $request)
     {
-        $validatedBlogInfo = Arr::except($request->validated(), ['image']);
+        return $validatedBlogInfo = Arr::except($request->validated(), ['image']);
 
         $image = $request->file('image');
         $createBlog = BlogService::addBlog($image, $validatedBlogInfo);

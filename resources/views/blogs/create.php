@@ -47,6 +47,16 @@
                 @include('common.error', [($value = 'status')])
             </div>
 
+            <div class="form-group">
+                <label for="status" class="form-label">Category</label>
+                <select name="category" value="{{ old('category') }}" id="category">
+                    @foreach ($category as $item)
+                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                    @endforeach
+                </select>
+                @include('common.error', [($value = 'category')])
+            </div>
+
 
             <div>
                 <input type="submit" class="btn btn-dark" value="Create Blog">

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
@@ -30,7 +31,7 @@ class BlogService
     {
         try {
             if ($image) {
-                unlink(public_path('storage/blog_images/') . $previousImageName);
+                // unlink(public_path('storage/blog_images/') . $previousImageName);
                 $image_name = date('YmdHi') . uniqid() . $image->getClientOriginalName();
                 $destinationPath = public_path('/storage/blog_images/');
                 $image->move($destinationPath, $image_name);
@@ -43,6 +44,7 @@ class BlogService
 
     public static function addBlog($image, $validatedBlogInfo)
     {
+
         $image_name = BlogService::checkAndSaveImageIfExist($image);
 
         $remainingBlogInfo = [
@@ -52,8 +54,9 @@ class BlogService
             'image' => $image_name,
         ];
 
-        $AddNewBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+        $AddNewBlog = Arr::collapse([Arr::except($validatedBlogInfo, ['category']), $remainingBlogInfo]);
         $blog_created = Blog::create($AddNewBlog);
+
         return $blog_created;
     }
 
@@ -70,7 +73,7 @@ class BlogService
             'published_at' =>  date('Y-m-d H:i:s'),
             'image' => $image_name,
         ];
-        $updateBlog = Arr::collapse([$validatedBlogInfo, $remainingBlogInfo]);
+        $updateBlog = Arr::collapse([Arr::except($validatedBlogInfo, ['category']), $remainingBlogInfo]);
 
         $blog_updated = $blog->update($updateBlog);
         return $blog_updated;

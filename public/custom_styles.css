@@ -32,7 +32,7 @@ select:focus {
 }
 
 .error-message {
-    color: rgb(61, 44, 172);
+    color: red;
 }
 
 .main_heading {

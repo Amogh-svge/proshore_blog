@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Services\BlogService;
 use Illuminate\Support\Arr;
 
@@ -14,13 +15,14 @@ class BlogController extends Controller
     public function index()
     {
         $blogs =  Blog::latest()->get();
-        return view('blogs.blog_list', compact(['blogs']));
+        return view('blogs.index', compact(['blogs']));
     }
 
 
     public function create()
     {
-        return view('blogs.blog_create');
+        $category = Category::all();
+        return view('blogs.create', compact('category'));
     }
 
 
@@ -33,9 +35,9 @@ class BlogController extends Controller
         $createBlog = BlogService::addBlog($image, $validatedBlogInfo);
 
         if ($createBlog)
-            return redirect(route('blog.index'))->with('success', 'Blog Successfully Created');
+            return redirect(route('blogs.index'))->with('success', 'Blog Successfully Created');
         else
-            return redirect(route('blog.index'))->with('failed', 'Failed To Create Blog ');
+            return redirect(route('blogs.index'))->with('failed', 'Failed To Create Blog ');
     }
 
 
@@ -47,7 +49,8 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
-        return view('blogs.blog_edit', compact(['blog']));
+        $category = Category::all();
+        return view('blogs.edit', compact(['blog', 'category']));
     }
 
 
@@ -59,9 +62,9 @@ class BlogController extends Controller
 
         $updateBlog = BlogService::updateBlog($blog, $image, $validatedBlogInfo);
         if ($updateBlog)
-            return redirect(route('blog.index'))->with('success', 'Blog Successfully Updated');
+            return redirect(route('blogs.index'))->with('success', 'Blog Successfully Updated');
         else
-            return redirect(route('blog.index'))->with('failed', 'Failed To Update Blog ');
+            return redirect(route('blogs.index'))->with('failed', 'Failed To Update Blog ');
     }
 
 

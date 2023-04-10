@@ -21,11 +21,25 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'required|min:3',
-            'image' => 'required',
-            'content' =>  'required|min:50',
-            'status' =>  'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+
+                return [
+                    'title' => 'required|min:3|unique:category',
+                    'image' => 'required|file|mimes:png,jpg',
+                    'content' =>  'required|min:50',
+                    'status' =>  'required',
+                ];
+
+            case 'PUT':
+            case 'PATCH':
+
+                return [
+                    'title' => 'required|min:3',
+                    'image' => 'required|file|mimes:png,jpg,jpeg',
+                    'content' =>  'required|min:50',
+                    'status' =>  'required',
+                ];
+        }
     }
 }

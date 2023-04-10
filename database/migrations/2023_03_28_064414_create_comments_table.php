@@ -18,6 +18,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             //  $table->foreignIdFor('Blog::class'); new way for foreign key 
+            $table->unsignedBigInteger('author_id');
             $table->text('comments');
             $table->dateTime('published_date');
             $table->timestamps();

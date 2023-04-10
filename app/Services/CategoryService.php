@@ -38,7 +38,7 @@ class CategoryService
         $previousImageName = $category->image;
 
         if ($image) {
-            unlink(public_path('storage/app_images/category_images/') . $previousImageName);
+            // unlink(public_path('storage/app_images/category_images/') . $previousImageName);
             $image_name = date('YmdHi') . uniqid() . $image->getClientOriginalName();
             $destinationPath = public_path('/storage/app_images/category_images/');
             $image->move($destinationPath, $image_name);

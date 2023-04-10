@@ -22,11 +22,12 @@ class BlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:3|string',
-            'image' => 'required|string',
+            'title' => 'required|min:3|unique:blogs',
+            'image' => 'required|file|mimes:png,jpg,jpeg|max:512',
             'summary' => 'required|min:15|string',
             'content' =>  'required|min:50|string',
             'status' =>  'required',
+            'category' => 'required'
         ];
     }
 }

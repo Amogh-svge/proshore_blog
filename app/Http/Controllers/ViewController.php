@@ -24,7 +24,6 @@ class ViewController extends Controller
                 ->whereNot('id', $blog->id)
                 ->limit(3)->latest()->get();
         }
-
         return view('pages.blog', compact(['blog', 'similar_blogs']));
     }
 

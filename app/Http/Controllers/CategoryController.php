@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
+use App\Models\BlogCategory;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories =  Category::all();
-        return view('category.category_list', compact('categories'));
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.category_create');
+        return view('category.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.category_edit', compact('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**

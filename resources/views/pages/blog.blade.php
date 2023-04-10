@@ -147,11 +147,13 @@
                     <div class="post-a-comment-area mt-70">
                         <h5>Get in Touch</h5>
                         <!-- Contact Form -->
-                        <form action="#" method="post">
+                        <form action="{{ route('comment.store') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="group">
-                                        <textarea name="message" id="message" required></textarea>
+                                        <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                        <textarea name="comments" id="comments" required></textarea>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Enter your comment</label>
@@ -180,8 +182,8 @@
                                     <div class="comment-content">
                                         <!-- Comment Meta -->
                                         <div class="comment-meta d-flex align-items-center justify-content-between">
-                                            <p><a href="#" class="post-author">{{ $comment->user->name }}</a> on <a
-                                                    href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                            <p><a href="#" class="post-author">Dummyy</a> on <a href="#"
+                                                    class="post-date">Sep 29, 2017 at 9:48 am</a></p>
                                             <a href="#" class="comment-reply btn world-btn">Reply</a>
                                         </div>
                                         <p>{{ $comment->comments }}</p>

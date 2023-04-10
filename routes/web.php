@@ -36,7 +36,8 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
 
 
 
-Route::controller(CommentController::class)->group(function () {
+Route::prefix('comment')->controller(CommentController::class)->name('comment.')->group(function () {
+    Route::post('/store', 'storeComment')->name('store');
 });
 
 Route::controller(TagController::class)->group(function () {

@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layout.blog_layout')
+@extends('layout.admin_layout')
 
 @section('content')
-    <!-- ********** Hero Area Start ********** -->
-    <div class="hero-area height-400 bg-img background-overlay" style="background-image: url(/img/blog-img/bg3.jpg);">
-        <div class="single-blog-title height-400 main_heading">
-            <h3 class=" ">Create Category</h3>
-        </div>
-    </div>
-    <!-- ********** Hero Area End ********** -->
     <main class="main-content">
         <form action="{{ route('category.update', $category->id) }}" class="blog_form" method="POST"
             enctype="multipart/form-data">

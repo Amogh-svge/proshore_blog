@@ -47,8 +47,10 @@
                                 <p class="line-clamp">{{ $blog->content }}</p>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
-                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#"
-                                            class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                    <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on <a
+                                            href="#"
+                                            class="post-date">{{ $date->parse($blog->user->published_at)->isoFormat('lll') }}</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>

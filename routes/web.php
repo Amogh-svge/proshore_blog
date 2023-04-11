@@ -34,6 +34,10 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
     });
 });
 
+Route::get('/admin', function () {
+    return view('layout.admin_layout');
+});
+
 
 
 Route::prefix('comment')->controller(CommentController::class)->name('comment.')->group(function () {

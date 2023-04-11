@@ -10,7 +10,7 @@ class ViewController extends Controller
 {
     public function homeView()
     {
-        $blogs = Blog::latest()->paginate(8);
+        $blogs = Blog::latest()->with('user')->paginate(8);
         return view('pages.index', compact('blogs'));
     }
 
@@ -21,6 +21,7 @@ class ViewController extends Controller
             $blog_category = $blog->category->first();
 
             $similar_blogs = $blog_category->blog()
+                ->with('user')
                 ->whereNot('id', $blog->id)
                 ->limit(3)->latest()->get();
         }
@@ -29,14 +30,14 @@ class ViewController extends Controller
 
     public function viewAllBlog()
     {
-        $blogs = Blog::latest()->paginate(9);
+        $blogs = Blog::latest()->with('user')->paginate(9);
         return view('pages.view_all_blogs', compact(['blogs']));
     }
 
     public function viewAllCategories($slug)
     {
         $blogs_of_category = Category::whereSlug($slug)->with('blog')->first();
-        $paginate_blogs = $blogs_of_category->blog()->paginate(9);
+        $paginate_blogs = $blogs_of_category->blog()->with('user')->paginate(9);
         return view('pages.view_all_categories', ['category' => $blogs_of_category, 'paginate_blogs' => $paginate_blogs]);
     }
 }

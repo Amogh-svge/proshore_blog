@@ -4,13 +4,6 @@
 @extends('layout.blog_layout')
 
 @section('content')
-    <!-- ********** Hero Area Start ********** -->
-    <div class="hero-area height-400 bg-img background-overlay" style="background-image: url(/img/blog-img/bg3.jpg);">
-        <div class="single-blog-title height-400 main_heading">
-            <h3 class=" ">Edit Blog</h3>
-        </div>
-    </div>
-    <!-- ********** Hero Area End ********** -->
     <main class="main-content">
         <form action="{{ route('blogs.update', $blog->id) }}" class="blog_form" method="POST" enctype="multipart/form-data">
             @method('PUT') @csrf

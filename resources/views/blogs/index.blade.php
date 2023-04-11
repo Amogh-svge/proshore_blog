@@ -1,19 +1,6 @@
-@extends('layout.blog_layout')
-@section('content')
-    <div class="hero-area height-600 bg-img background-overlay"
-        style="background-image: url({{ url('/img/blog-img/bg1.jpg') }});">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="single-blog-title text-center">
-                        <h3>All Blogs list</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ********** Hero Area End ********** -->
+@extends('layout.admin_layout')
 
+@section('content')
     <div class="main-content-wrapper section-padding-100">
         <div class="container">
             @if ($message = Session::get('success'))

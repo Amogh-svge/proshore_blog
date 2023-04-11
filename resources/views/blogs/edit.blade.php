@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 @extends('layout.blog_layout')
 
 @section('content')

@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::resource('blogs', BlogController::class);
-Route::resource('category', CategoryController::class);
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('blogs', BlogController::class);
+    Route::resource('category', CategoryController::class);
+    Route::get('dashboard', [ViewController::class, 'viewAdminIndexPage'])->middleware('verified')->name('dashboard');
+});
+
+require __DIR__ . '/auth.php';
+
 
 
 Route::controller(ViewController::class)->name('view.')->group(function () {
@@ -34,15 +43,10 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
     });
 });
 
-Route::get('/admin', function () {
-    return view('layout.admin_layout');
-});
-
 
 
 Route::prefix('comment')->controller(CommentController::class)->name('comment.')->group(function () {
     Route::post('/store', 'storeComment')->name('store');
 });
-
 Route::controller(TagController::class)->group(function () {
 });

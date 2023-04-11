@@ -26,7 +26,6 @@ class BlogController extends Controller
     }
 
 
-
     public function store(BlogRequest $request)
     {
         return $validatedBlogInfo = Arr::except($request->validated(), ['image']);

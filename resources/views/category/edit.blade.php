@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 @extends('layout.admin_layout')
 
 @section('content')

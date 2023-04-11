@@ -40,4 +40,9 @@ class ViewController extends Controller
         $paginate_blogs = $blogs_of_category->blog()->with('user')->paginate(9);
         return view('pages.view_all_categories', ['category' => $blogs_of_category, 'paginate_blogs' => $paginate_blogs]);
     }
+
+    public function viewAdminIndexPage()
+    {
+        return view('admin.index');
+    }
 }

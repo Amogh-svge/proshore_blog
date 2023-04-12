@@ -18,7 +18,7 @@
 .form-container {
     width: 750px;
     max-height: inherit;
-    background-color: rgb(125, 178, 211);
+    background-color: rgb(123 123 124 / 78%);
 }
 
 .form-image {
@@ -81,13 +81,13 @@
 .btn {
     margin-top: 10px;
     border: none;
-    background-color: rgb(72, 72, 209);
+    background-color: rgb(17, 17, 17);
     cursor: pointer;
     color: white;
 }
 
 .btn:hover {
-    background-color: rgb(44, 44, 176);
+    background-color: rgb(54, 54, 54);
 }
 
 input[type="checkbox"] {

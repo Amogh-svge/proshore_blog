@@ -69,11 +69,18 @@
                                         @endforeach
                                     </div>
                                 </li>
+                                @guest
+
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                    </li>
+                                @endguest
                             </ul>
                             <!-- Search Form  -->
                             <div id="search-wrapper">
-                                <form action="#">
-                                    <input type="text" id="search" placeholder="Search something...">
+                                <form action="{{ route('view.search') }}" method="GET">
+                                    <input type="text" id="search" name="search"
+                                        placeholder="Search something...">
                                     <div id="close-icon"></div>
                                     <input class="d-none" type="submit" value="">
                                 </form>

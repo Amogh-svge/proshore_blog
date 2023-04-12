@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,12 +30,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('dashboard', [ViewController::class, 'viewAdminIndexPage'])->middleware('verified')->name('dashboard');
 });
 
-require __DIR__ . '/auth.php';
-
 
 
 Route::controller(ViewController::class)->name('view.')->group(function () {
     Route::get('/', 'homeView')->name('home');
+    Route::get('/search', 'search')->name('search');
     Route::get('/blog-detail/{slug}', 'blogView')->name('blog');
 
     Route::prefix('blog')->group(function () {
@@ -44,9 +44,6 @@ Route::controller(ViewController::class)->name('view.')->group(function () {
 });
 
 
-
 Route::prefix('comment')->controller(CommentController::class)->name('comment.')->group(function () {
     Route::post('/store', 'storeComment')->name('store');
-});
-Route::controller(TagController::class)->group(function () {
 });

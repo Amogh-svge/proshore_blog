@@ -62,6 +62,7 @@
                                     <a class="nav-link" href="{{ route('view.home') }}">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
+
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -74,6 +75,18 @@
                                     </div>
                                 </li>
 
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('profile.edit') }}">Profile </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">{{ __('Log Out') }}</a>
+                                    </form>
+                                </li>
                             </ul>
                             <!-- Search Form  -->
                             <div id="search-wrapper">
@@ -105,7 +118,16 @@
                     <div class="sidebar">
                         <div class="sidebar-extended">
 
-                            <div class=" accordion" id="">
+                            <div class="accordion">
+                                <div class="bg-dark accordion_title ">
+                                    <div class="accordion_item p-0">
+                                        <a class="" href="{{ route('dashboard') }}">Dashboard</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class=" accordion">
                                 <div class="bg-dark accordion_title">
                                     Blogs <i class="fa-solid fa-caret-down"></i>
                                 </div>
@@ -120,7 +142,7 @@
                                 </ul>
                             </div>
 
-                            <div class=" accordion" id="">
+                            <div class=" accordion">
                                 <div class="bg-dark accordion_title">
                                     Category <i class="fa-solid fa-caret-down"></i>
                                 </div>

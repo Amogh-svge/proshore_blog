@@ -3,6 +3,10 @@
 @section('content')
     <div class="main-content-wrapper section-padding-100">
         <div class="container">
+
+            <h3>Dashboard</h3>
+
+            <p class="text-info">Welcome to the Admin Dashboard Section</p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, aspernatur! Suscipit illo laudantium incidunt
             corporis, minus sapiente sed autem nobis quis ipsam perspiciatis aliquid accusamus deserunt veritatis unde
             laborum maxime officia, est earum dolorum id voluptatem! Quod corporis autem sequi maxime velit est magni

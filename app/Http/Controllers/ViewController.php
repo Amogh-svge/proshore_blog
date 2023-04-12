@@ -45,4 +45,16 @@ class ViewController extends Controller
     {
         return view('admin.index');
     }
+
+    public function search(Request $request)
+    {
+        // return $request->search; 
+        $search = "Et et    ";
+        $results = Blog::where('title', 'Like', '%' . $search . '%')->paginate(9);
+        return view('common.search', compact('results'));
+    }
+
+    public function viewSearchResults()
+    {
+    }
 }

@@ -26,8 +26,8 @@ class CategoryService
             'image' => $image_name,
         ];
 
-        $AddNewCategory = Arr::collapse([$validatedCategoryInfo, $remainingCategoryInfo]);
-        $category_created = Category::create($AddNewCategory);
+        $validatedCategoryInfo += $remainingCategoryInfo;
+        $category_created = Category::create($validatedCategoryInfo);
         return $category_created;
     }
 
@@ -49,8 +49,8 @@ class CategoryService
             'image' => $image_name,
         ];
 
-        $updateCategory = Arr::collapse([$validatedCategoryInfo, $remainingCategoryInfo]);
-        $category_updated = $category->update($updateCategory);
+        $validatedCategoryInfo += $remainingCategoryInfo;
+        $category_updated = $category->update($validatedCategoryInfo);
         return $category_updated;
     }
 }

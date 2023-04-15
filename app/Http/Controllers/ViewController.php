@@ -23,8 +23,8 @@ class ViewController extends Controller
             $blog_category = $blog->category->first();
 
             $similar_blogs = $blog_category->blog()
+                ->whereNot('blog_id', $blog->id)
                 ->with('user')
-                ->whereNot('id', $blog->id)
                 ->limit(3)->latest()->get();
         }
         return view('pages.blog', compact(['blog', 'similar_blogs']));

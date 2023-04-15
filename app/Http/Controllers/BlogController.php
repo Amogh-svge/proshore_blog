@@ -28,10 +28,11 @@ class BlogController extends Controller
 
     public function store(BlogRequest $request)
     {
-        return $validatedBlogInfo = Arr::except($request->validated(), ['image']);
+        $validatedBlogInfo = $request->validated();
+        $validatedBlogInfo['image'] = $request->file('image');
 
-        $image = $request->file('image');
-        $createBlog = BlogService::addBlog($image, $validatedBlogInfo);
+        $createBlog = BlogService::addBlog($validatedBlogInfo['image'], $validatedBlogInfo);
+        $createBlog->category()->attach($validatedBlogInfo['category']);
 
         if ($createBlog)
             return redirect(route('blogs.index'))->with('success', 'Blog Successfully Created');
@@ -56,10 +57,11 @@ class BlogController extends Controller
 
     public function update(BlogRequest $request, Blog $blog)
     {
-        $validatedBlogInfo = Arr::except($request->validated(), ['image']);
-        $image = $request->file('image');
+        $validatedBlogInfo = $request->validated();
+        $validatedBlogInfo['image'] = $request->file('image');
 
-        $updateBlog = BlogService::updateBlog($blog, $image, $validatedBlogInfo);
+        $updateBlog = BlogService::updateBlog($blog, $validatedBlogInfo['image'], $validatedBlogInfo);
+
         if ($updateBlog)
             return redirect(route('blogs.index'))->with('success', 'Blog Successfully Updated');
         else
@@ -69,9 +71,10 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog)
     {
-        if ($blog->delete())
+        if ($blog->delete()) {
+            $blog->category()->detach();
             return back()->with('success', 'Blog Successfully Deleted');
-        else
-            return back()->with('failed', 'Failed To  Successfully Updated');
+        } else
+            return back()->with('failed', 'Failed To Successfully Updated');
     }
 }

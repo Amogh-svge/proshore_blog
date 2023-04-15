@@ -46,7 +46,6 @@ class BlogService
     {
 
         $image_name = BlogService::checkAndSaveImageIfExist($image);
-
         $remainingBlogInfo = [
             'slug' => Str::slug($validatedBlogInfo['title']),
             'author_id' => User::all()->random()->id,
@@ -54,9 +53,9 @@ class BlogService
             'image' => $image_name,
         ];
 
-        $AddNewBlog = Arr::collapse([Arr::except($validatedBlogInfo, ['category']), $remainingBlogInfo]);
+        $validatedBlogInfo += $remainingBlogInfo;
+        $AddNewBlog = Arr::except($validatedBlogInfo, ['category']);
         $blog_created = Blog::create($AddNewBlog);
-
         return $blog_created;
     }
 
@@ -73,8 +72,9 @@ class BlogService
             'published_at' =>  date('Y-m-d H:i:s'),
             'image' => $image_name,
         ];
-        $updateBlog = Arr::collapse([Arr::except($validatedBlogInfo, ['category']), $remainingBlogInfo]);
 
+        $validatedBlogInfo += $remainingBlogInfo;
+        $updateBlog = Arr::except($validatedBlogInfo, ['category']);
         $blog_updated = $blog->update($updateBlog);
         return $blog_updated;
     }

@@ -63,10 +63,12 @@
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">Category</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @foreach ($categories as $category)
+                                        @forelse ($categories as $category)
                                             <a class="dropdown-item"
                                                 href="{{ route('view.category', $category->slug) }}">{{ $category->title }}</a>
-                                        @endforeach
+                                        @empty
+                                            <p class="m-0 text-dark text-center"><small>No Categories</small></p>
+                                        @endforelse
                                     </div>
                                 </li>
                                 @guest
@@ -83,7 +85,7 @@
                             <!-- Search Form  -->
                             <div id="search-wrapper">
                                 <form action="{{ route('view.search') }}" method="GET">
-                                    <input type="text" id="search" name="search"
+                                    <input type="text" id="search" name="query"
                                         placeholder="Search something...">
                                     <div id="close-icon"></div>
                                     <input class="d-none" type="submit" value="">

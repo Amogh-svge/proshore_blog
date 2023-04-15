@@ -1,12 +1,5 @@
 @extends('layout.blog_layout')
 
-@section('php')
-    @php
-        use Carbon\Carbon;
-        $date = Carbon::now();
-    @endphp
-@endsection
-
 @section('content')
     <!-- ********** Hero Area Start ********** -->
     {{-- @dd($category) --}}
@@ -49,8 +42,7 @@
                                 <!-- Post Meta -->
                                 <div class="post-meta">
                                     <p><a href="#" class="post-author">{{ $blog->user->name }}</a>
-                                        on <a href="#"
-                                            class="post-date">{{ $date->parse($blog->user->published_at)->isoFormat('lll') }}</a>
+                                        on <a href="#" class="post-date">{{ $blog->publishedAt() }}</a>
                                     </p>
                                 </div>
                             </div>

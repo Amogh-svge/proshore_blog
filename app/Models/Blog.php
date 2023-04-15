@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,6 +28,12 @@ class Blog extends Model
     public function category(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'table_blog_category', 'blog_id', 'category_id');
+    }
+
+
+    public function publishedAt() // Carbon date conversion
+    {
+        return Carbon::parse($this->published_at)->isoFormat('lll');
     }
 }
 

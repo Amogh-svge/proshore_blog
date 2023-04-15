@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,9 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             //  $table->foreignIdFor('Blog::class'); new way for foreign key 
-            $table->unsignedBigInteger('author_id');
+            $table->foreignIdFor(User::class)->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->text('comments');
             $table->dateTime('published_date');
             $table->timestamps();

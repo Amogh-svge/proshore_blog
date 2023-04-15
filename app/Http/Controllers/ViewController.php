@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Carbon\Carbon;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
+
     public function homeView()
     {
         $blogs = Blog::latest()->with('user')->paginate(8);
-        return view('pages.index', compact('blogs'));
+        return view('pages.index', compact(['blogs']));
     }
 
     public function blogView($slug)
@@ -48,13 +50,16 @@ class ViewController extends Controller
 
     public function search(Request $request)
     {
-        // return $request->search; 
-        $search = "Et et    ";
-        $results = Blog::where('title', 'Like', '%' . $search . '%')->paginate(9);
-        return view('common.search', compact('results'));
-    }
+        $validated = $request->validate([
+            'query' => 'required|min:3|max: 255',
+        ]);
 
-    public function viewSearchResults()
-    {
+        $search =   preg_replace('/\s+/', ' ', trim($validated['query']));
+
+        $results = Blog::where('title', 'Like', '%' . $search . '%')
+            ->orWhere('content', 'Like', '%' . $search . '%')->with('user')
+            ->paginate(9);
+
+        return view('common.search', compact('results'));
     }
 }

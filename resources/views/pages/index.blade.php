@@ -1,12 +1,5 @@
 @extends('layout.blog_layout')
 
-@section('php')
-    @php
-        use Carbon\Carbon;
-        $date = Carbon::now();
-    @endphp
-@endsection
-
 @section('content')
     <!-- ********** Hero Area Start ********** -->
     <div class="hero-area height-600 bg-img background-overlay" style="background-image: url(img/blog-img/bg2.jpg);">
@@ -67,8 +60,7 @@
                                                 <!-- Post Meta -->
                                                 <div class="post-meta">
                                                     <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on
-                                                        <a href="#"
-                                                            class="post-date">{{ $date->parse($blog->published_at)->isoFormat('lll') }}</a>
+                                                        <a href="#" class="post-date">{{ $blog->publishedAt() }}</a>
                                                     </p>
                                                 </div>
                                             </div>

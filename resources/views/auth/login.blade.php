@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/authenticate.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>Document</title>
-
 </head>
 
 <body class="container">
@@ -33,7 +35,7 @@
                     <input type="password" placeholder="Enter Your Password" id="password" name="password" required
                         autocomplete="current-password">
                 </div>
-                <div class="form-check ">
+                <div class="form-check">
                     <span>
                         <input id="remember_me" type="checkbox" name="remember"><label for="">Remember
                             me</label>

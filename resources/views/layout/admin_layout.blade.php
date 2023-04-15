@@ -68,10 +68,12 @@
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">Category</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @foreach ($categories as $category)
+                                        @forelse ($categories as $category)
                                             <a class="dropdown-item"
                                                 href="{{ route('view.category', $category->slug) }}">{{ $category->title }}</a>
-                                        @endforeach
+                                        @empty
+                                            <p class="m-0 text-dark text-center"><small>No Categories</small></p>
+                                        @endforelse
                                     </div>
                                 </li>
 

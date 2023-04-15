@@ -1,12 +1,5 @@
 @extends('layout.blog_layout')
 
-@section('php')
-    @php
-        use Carbon\Carbon;
-        $date = Carbon::now();
-    @endphp
-@endsection
-
 @section('content')
     <!-- ********** Hero Area Start ********** -->
 
@@ -33,7 +26,7 @@
                         <!-- Post Meta -->
                         <div class="post-meta">
                             <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on <a href="#"
-                                    class="post-date">{{ $date->parse($blog->published_at)->isoFormat('lll') }}</a></p>
+                                    class="post-date">{{ $blog->publishedAt() }}</a></p>
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">
@@ -64,7 +57,7 @@
                             <!-- Post Meta -->
                             <div class="post-meta second-part">
                                 <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on <a href="#"
-                                        class="post-date">{{ $date->parse($blog->published_at)->isoFormat('lll') }}</a></p>
+                                        class="post-date">{{ $blog->publishedAt() }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -126,8 +119,7 @@
                                 <!-- Post Meta -->
                                 <div class="post-meta">
                                     <p><a href="#" class="post-author">{{ $blog->user->name }}</a> on <a
-                                            href="#"
-                                            class="post-date">{{ $date->parse($blog->user->published_at)->isoFormat('lll') }}</a>
+                                            href="#" class="post-date">{{ $blog->publishedAt() }}</a>
                                     </p>
                                 </div>
                             </div>

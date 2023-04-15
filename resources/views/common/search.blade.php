@@ -77,7 +77,10 @@
                                         </div>
                                     @empty
 
-                                        <h3>Its Empty</h3>
+                                        <div class="col-12 d-flex align-items-center justify-content-center">
+                                            <img src="{{ url('/no-content.svg') }}" alt="">
+                                            <h5 class="text-center">Nothing Here</h5>
+                                        </div>
                                     @endforelse
                                 </div>
 

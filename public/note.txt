@@ -1,0 +1,47 @@
+
+
+
+
+
+
+Constructor:
+    
+
+MVC architecture: 
+Laravel is an MVC-based PHP framework that ensures a tight separation between presentation 
+layers and business logic. MVC stands for Model, View, and Controller. It is a design pattern
+ that separates the model (logic, data handling), view (UI), and controller processes
+  (interface).
+
+    -> Model:
+    Deals wih Database, It interacts with the database.
+
+    -> View:
+    User interface and interaction part
+
+    ->controller
+    Controls and contains all the logics.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Blade Template : 
+    The Blade is a powerful templating engine in a Laravel framework. 
+    The blade allows to use the templating engine easily, and it makes the syntax 
+    writing very simple.
